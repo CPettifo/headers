@@ -8,9 +8,9 @@ def main():
     try:
         response = requests.post(processor_url, json=headers)
         print("Sent", headers, "Response", response.status_code)
+        print("Response data: ", response.json())
     except Exception as e:
         print("Error: ", e)
-
 
 def collect_headers():
     # for now just return wikipedia's ip

@@ -3,6 +3,11 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 def process_header(info):
+    # query ip api to get further information
+
+    # return relevant information
+
+
     # for now return dummy data
     return {
         "ip": info.get("ip"),
