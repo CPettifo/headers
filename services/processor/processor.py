@@ -1,18 +1,21 @@
 from flask import Flask, request, jsonify
+import requests
 
 app = Flask(__name__)
 
 def process_header(info):
-    # query ip api to get further information
+    ip = info.get("ip")
+    user_agent = info.get("user_agent")
+    try:
+        ip_info_response = requests.get(f"https://ipinfo.io/{ip}/json")
+        ip_info = ip_info_response.json()
+    except Exception as e:
+        ip_info = {"error": str(e)}
 
-    # return relevant information
-
-
-    # for now return dummy data
     return {
-        "ip": info.get("ip"),
-        "country": "Ugunda",
-        "user_agent": info.get("user_agent")
+        "ip": ip,
+        "user_agent": user_agent,
+        "ip_info": ip_info
     }
 
 @app.route("/process", methods=["POST"])
