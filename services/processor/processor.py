@@ -19,7 +19,6 @@ def process_header(info):
 def process():
     header = request.get_json()
     processed = process_header(header)
-    print("Processed:", processed)
     return jsonify({"status": "ok", "data": processed})
 
 if __name__ == "__main__":
