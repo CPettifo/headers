@@ -7,8 +7,8 @@ def main():
     headers = collect_headers()
     try:
         response = requests.post(processor_url, json=headers)
-        print("Sent", headers, "Response", response.status_code)
-        print("Response data: ", response.json())
+        print("sent headers, response from processor:", response.status_code)
+        print("Response json: ", response.json())
     except Exception as e:
         print("Error: ", e)
 
