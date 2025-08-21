@@ -1,0 +1,10 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+COPY . .
+
+RUN pip install requirements.txt
+
+EXPOSE 5000
+
+CMD ["uvicorn", "processor:app", "--host", "0.0.0.0", "--port", "5000"]

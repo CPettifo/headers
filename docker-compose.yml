@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  processor:
+    build: ./services/processor
+    ports:
+      - "5000:5000"
+
+  collector:
+    build: ./services/collector
+    depends_on:
+      - processor
