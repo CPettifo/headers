@@ -7,4 +7,6 @@ COPY . .
 # upgrade pip and install the requirements
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "./collector.py"]
+EXPOSE 5000
+
+CMD ["python", "collector.py"]

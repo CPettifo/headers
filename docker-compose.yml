@@ -8,5 +8,5 @@ services:
 
   collector:
     build: ./services/collector
-    depends_on:
-      - processor
+    ports:
+      - "5001:5000"

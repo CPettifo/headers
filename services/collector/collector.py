@@ -1,16 +1,26 @@
+from flask import Flask, jsonify, request
 import requests
-import time
 
+app = Flask(__name__)
 processor_url = "http://processor:5000/process"
 
-def main():
+@app.route("/")
+def home_route():
+    return {"message": "Collector is running"}
+
+
+@app.route("/send", methods=["GET"])
+def send_headers():
     headers = collect_headers()
     try:
         response = requests.post(processor_url, json=headers)
-        print("sent headers, response from processor:", response.status_code)
-        print("Response json: ", response.json())
+        return {
+            "sent_headers": headers,
+            "processor_status": response.status_code,
+            "processor_response": response.json()
+        }
     except Exception as e:
-        print("Error: ", e)
+        return {"error": str(e)}, 500
 
 def collect_headers():
     # for now just return wikipedia's ip
@@ -19,7 +29,5 @@ def collect_headers():
         "user_agent": "Mozilla/5.0"
     }
 
-
-
 if __name__ == "__main__":
-    main()
+    app.run(host = "0.0.0.0", port = 5000, debug = True)
