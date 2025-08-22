@@ -13,7 +13,9 @@ def home_route():
 def send_headers():
     headers = dict(request.headers)
     # get the connecting IP from the Cloudflare tunnel
-    ip = request.headers.get("CF-Connecting-IP", request.remote_addr)
+    ip = headers.get("X-Forwarded-For") \
+    #     or headers.get("X-Forwarded-For") \
+    #     or request.remote_addr
     # For now replace this with geeks for geeks ip
     # ip = "13.248.169.48"
     public_headers = {"ip": ip,
