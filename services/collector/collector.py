@@ -11,23 +11,21 @@ def home_route():
 
 @app.route("/send", methods=["GET"])
 def send_headers():
-    headers = collect_headers()
+    headers = dict(request.headers)
+    ip = request.remote_addr
+    # For now replace this with geeks for geeks ip
+    ip = "13.248.169.48"
+    public_headers = {"ip": ip,
+                      "user_agent": headers.get("User-Agent")}
     try:
-        response = requests.post(processor_url, json=headers)
+        response = requests.post(processor_url, json=public_headers)
         return {
-            "sent_headers": headers,
+            "sent_headers": public_headers,
             "processor_status": response.status_code,
             "processor_response": response.json()
         }
     except Exception as e:
         return {"error": str(e)}, 500
-
-def collect_headers():
-    # for now just return wikipedia's ip
-    return {
-        "ip": "208.80.154.224",
-        "user_agent": "Mozilla/5.0"
-    }
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5000, debug = True)
