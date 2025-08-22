@@ -15,7 +15,7 @@ def send_headers():
     # get the connecting IP from the Cloudflare tunnel
     ip = request.headers.get("CF-Connecting-IP", request.remote_addr)
     # For now replace this with geeks for geeks ip
-    ip = "13.248.169.48"
+    # ip = "13.248.169.48"
     public_headers = {"ip": ip,
                       "user_agent": headers.get("User-Agent")}
     try:
