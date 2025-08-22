@@ -12,7 +12,8 @@ def home_route():
 @app.route("/send", methods=["GET"])
 def send_headers():
     headers = dict(request.headers)
-    ip = request.remote_addr
+    # get the connecting IP from the Cloudflare tunnel
+    ip = request.headers.get("CF-Connecting-IP", request.remote_addr)
     # For now replace this with geeks for geeks ip
     ip = "13.248.169.48"
     public_headers = {"ip": ip,
