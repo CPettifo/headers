@@ -22,7 +22,7 @@ def send_headers():
             "country": data.get("country"),
             "time": datetime.datetime.now(),
             "isp": data.get("org"),
-            "full_response": data,
+            "full_response": response.json(),
             "processor_status": response.status_code,
             "sent_headers": public_headers
         }
