@@ -16,7 +16,7 @@ def send_headers():
                       "user_agent": headers.get("User-Agent")}
     try:
         response = requests.post(processor_url, json=public_headers)
-        data = response.json()
+        # data = response.json()
         return {
             "processor_response": response.json(),
             "processor_status": response.status_code,
