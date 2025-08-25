@@ -12,16 +12,16 @@ def home_route():
 @app.route("/send", methods=["GET"])
 def send_headers():
     headers = dict(request.headers)
-    public_headers = {"ip": "8.8.8.8", #request.remote_addr,
+    public_headers = {"ip": headers.get("Cf-Connecting-Ip"),
                       "user_agent": headers.get("User-Agent")}
     try:
         response = requests.post(processor_url, json=public_headers)
         # data = response.json()
         return {
-            "processor_response": response.json(),
-            "processor_status": response.status_code,
+            "full_response": response.json(),
+            "full_code_response": response.status_code,
             "sent_headers": public_headers,
-            "all_headers": headers
+            "user_headers": headers
         }
     except Exception as e:
         return {"error": str(e)}, 500
