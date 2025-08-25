@@ -18,10 +18,20 @@ def process_header(info):
         "ip_info": ip_info
     }
 
+def write_to_db(header, processed):
+    # connect to db
+
+    # separate out values to store
+
+    # write to db
+    return 0
+
+
 @app.route("/process", methods=["POST"])
 def process():
     header = request.get_json()
     processed = process_header(header)
+    write_to_db(header, processed)
     return jsonify({"status": "ok", "data": processed})
 
 if __name__ == "__main__":
