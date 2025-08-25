@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-import requests
+import requests, datetime
 
 app = Flask(__name__)
 processor_url = "http://processor:5000/process"
@@ -12,20 +12,19 @@ def home_route():
 @app.route("/send", methods=["GET"])
 def send_headers():
     headers = dict(request.headers)
-    # get the connecting IP from the Cloudflare tunnel
-    ip = headers.get("X-Forwarded-For") \
-    #     or headers.get("X-Forwarded-For") \
-    #     or request.remote_addr
-    # For now replace this with geeks for geeks ip
-    # ip = "13.248.169.48"
-    public_headers = {"ip": ip,
+    public_headers = {"ip": request.remote_addr,
                       "user_agent": headers.get("User-Agent")}
     try:
         response = requests.post(processor_url, json=public_headers)
+        data = response.json()
         return {
-            "sent_headers": public_headers,
+            # should convert this from country code to country name
+            "country": data.get("country"),
+            "time": datetime.datetime.now(),
+            "isp": data.get("org"),
+            "full_response": data,
             "processor_status": response.status_code,
-            "processor_response": response.json()
+            "sent_headers": public_headers
         }
     except Exception as e:
         return {"error": str(e)}, 500
