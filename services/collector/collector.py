@@ -16,10 +16,11 @@ def send_headers():
                       "user_agent": headers.get("User-Agent")}
     try:
         response = requests.post(processor_url, json=public_headers)
+        data = response.json()
         return {
-            "country": response.json().country,
-            "city": response.json().city,
-            "full_response": response.json(),
+            "country": data.get.country,
+            "city": data.get.city,
+            "full_response": data,
             "full_code_response": response.status_code,
             "sent_headers": public_headers,
             "user_headers": headers,
