@@ -20,7 +20,8 @@ def send_headers():
         return {
             "processor_response": response.json(),
             "processor_status": response.status_code,
-            "sent_headers": public_headers
+            "sent_headers": public_headers,
+            "all_headers": headers
         }
     except Exception as e:
         return {"error": str(e)}, 500
