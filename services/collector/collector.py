@@ -17,9 +17,10 @@ def send_headers():
     try:
         response = requests.post(processor_url, json=public_headers)
         data = response.json()
+        ip_info = data.get("ip_info", {})
         return {
-            "country": data.get("country"),
-            "city": data.get("city"),
+            "country": ip_info.get("country"),
+            "city": ip_info.get("city"),
             "full_response": data,
             "full_code_response": response.status_code,
             "sent_headers": public_headers,
