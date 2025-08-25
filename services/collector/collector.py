@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-import requests, datetime
+import requests
 
 app = Flask(__name__)
 processor_url = "http://processor:5000/process"
@@ -18,11 +18,7 @@ def send_headers():
         response = requests.post(processor_url, json=public_headers)
         data = response.json()
         return {
-            # should convert this from country code to country name
-            "country": data.get("country"),
-            "time": datetime.datetime.now(),
-            "isp": data.get("org"),
-            "full_response": response.json(),
+            "processor_response": response.json(),
             "processor_status": response.status_code,
             "sent_headers": public_headers
         }
