@@ -17,8 +17,8 @@ def send_headers():
     try:
         response = requests.post(processor_url, json=public_headers)
         return {
-            "country": response.country,
-            "city": response.city,
+            "country": response.json().country,
+            "city": response.json().city,
             "full_response": response.json(),
             "full_code_response": response.status_code,
             "sent_headers": public_headers,
