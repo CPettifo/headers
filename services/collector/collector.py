@@ -12,7 +12,7 @@ def home_route():
 @app.route("/send", methods=["GET"])
 def send_headers():
     headers = dict(request.headers)
-    public_headers = {"ip": request.remote_addr,
+    public_headers = {"ip": "8.8.8.8", #request.remote_addr,
                       "user_agent": headers.get("User-Agent")}
     try:
         response = requests.post(processor_url, json=public_headers)
