@@ -43,7 +43,7 @@ def process():
     response = process_header(header)
     # separate values to store
     values = {
-        "country": response.ip_info.country,
+        "country": response.country,
         "user_agent": response.user_agent
     }
 
