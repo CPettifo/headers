@@ -34,6 +34,7 @@ def process():
     header = request.get_json()
     processed = process_header(header)
     # separate values to store
+    values = "sandwich"
 
     write_to_db(values)
     return jsonify({"status": "ok", "data": processed})
