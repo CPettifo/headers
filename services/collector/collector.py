@@ -1,5 +1,6 @@
 from flask import Flask, request
-import requests, datetime
+from datetime import date
+import requests
 
 app = Flask(__name__)
 processor_url = "http://processor:5000/process"
@@ -18,6 +19,8 @@ def send_headers():
         response = requests.post(processor_url, json=public_headers)
         data = response.json()
         ip_info = data.get("data", {}).get("ip_info", {})
+        date_today = date.today().isoformat()
+
         return {
             "agent": headers.get("User-Agent"),
             "country": ip_info.get("country"),
@@ -26,7 +29,7 @@ def send_headers():
             "full_code_response": response.status_code,
             "sent_headers": public_headers,
             "user_headers": headers,
-            "date_today": datetime.date.today()
+            "date_today": date_today
         }
     except Exception as e:
         return {"error": str(e)}, 500
