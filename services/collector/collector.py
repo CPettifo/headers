@@ -1,5 +1,5 @@
 from flask import Flask, request
-import requests, date
+import requests, datetime
 
 app = Flask(__name__)
 processor_url = "http://processor:5000/process"
@@ -26,7 +26,7 @@ def send_headers():
             "full_code_response": response.status_code,
             "sent_headers": public_headers,
             "user_headers": headers,
-            "date_today": date.today()
+            "date_today": datetime.date.today()
         }
     except Exception as e:
         return {"error": str(e)}, 500
