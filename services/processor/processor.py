@@ -9,12 +9,15 @@ def process_header(info):
     user_agent = info.get("user_agent")
     try:
         ip_info_response = requests.get(f"https://ipinfo.io/{ip}/json")
-        # Convert the country code to the country name using pycountry (lazy)
-        ip_info_response.country = pycountry.countries.get(ip_info_response.country)
         ip_info = ip_info_response.json()
+
+        if "country" in ip_info:
+            country = pycountry.countries.get(alpha_2=ip_info["country"])
+            ip_info["country_name"] = country.name if country else ip_info["country"]
+
     except Exception as e:
         ip_info = {"error": str(e)}
-        
+
     return {
         "ip": ip,
         "user_agent": user_agent,
@@ -41,8 +44,8 @@ def process():
     response = process_header(header)
     # separate values to store
     values = {
-        "country": response.country,
-        "user_agent": response.user_agent
+        "country": response["ip_info"].get("country_name"),
+        "user_agent": response["user_agent"]
     }
 
     write_to_db(values)
