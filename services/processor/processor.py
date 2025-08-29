@@ -9,14 +9,12 @@ def process_header(info):
     user_agent = info.get("user_agent")
     try:
         ip_info_response = requests.get(f"https://ipinfo.io/{ip}/json")
+        # Convert the country code to the country name using pycountry (lazy)
+        ip_info_response.country = pycountry.countries.get(ip_info_response.country)
         ip_info = ip_info_response.json()
     except Exception as e:
         ip_info = {"error": str(e)}
-
-    # Convert the country code to the country name using pycountry (lazy)
-    ip_info.country = pycountry.countries.get(ip_info.country)
-
-
+        
     return {
         "ip": ip,
         "user_agent": user_agent,
