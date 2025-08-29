@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
-import requests
+from datetime import date
+import requests, pycountry
 
 app = Flask(__name__)
 
@@ -12,6 +13,10 @@ def process_header(info):
     except Exception as e:
         ip_info = {"error": str(e)}
 
+    # Convert the country code to the country name using pycountry (lazy)
+    ip_info.country = pycountry.countries.get(ip_info.country)
+
+
     return {
         "ip": ip,
         "user_agent": user_agent,
@@ -19,8 +24,11 @@ def process_header(info):
     }
 
 def write_to_db(values):
-    # connect to db
+    # get today's date
+    date_today = date.today().isoformat()
 
+    # connect to db
+    
     # write to db
     # INSERT INTO logs (date, country)
     # VALUES (values.date, values.country)
@@ -32,12 +40,15 @@ def write_to_db(values):
 @app.route("/process", methods=["POST"])
 def process():
     header = request.get_json()
-    processed = process_header(header)
+    response = process_header(header)
     # separate values to store
-    values = "sandwich"
+    values = {
+        "country": response.ip_info.country,
+        "user_agent": response.user_agent
+    }
 
     write_to_db(values)
-    return jsonify({"status": "ok", "data": processed})
+    return jsonify({"status": "ok", "data": response})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
