@@ -24,10 +24,7 @@ def send_headers():
             "agent": headers.get("User-Agent"),
             "country": ip_info.get("country"),
             "city": ip_info.get("city"),
-            "full_response": data,
-            "full_code_response": response.status_code,
-            "sent_headers": public_headers,
-            "user_headers": headers
+            "response_code": response.status_code
         }
     except Exception as e:
         return {"error": str(e)}, 500
