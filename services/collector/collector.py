@@ -4,11 +4,7 @@ import requests
 app = Flask(__name__)
 processor_url = "http://processor:5000/process"
 
-@app.route("/")
-def home_route():
-    return {"message": "Collector is running"}
-
-
+@app.route("/", methods=["GET"])
 @app.route("/send", methods=["GET"])
 def send_headers():
     headers = dict(request.headers)
