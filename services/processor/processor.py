@@ -18,12 +18,14 @@ def process_header(info):
         "ip_info": ip_info
     }
 
-def write_to_db(header, processed):
+def write_to_db(values):
     # connect to db
 
-    # separate out values to store
-
     # write to db
+    # INSERT INTO logs (date, country)
+    # VALUES (values.date, values.country)
+
+
     return 0
 
 
@@ -31,7 +33,9 @@ def write_to_db(header, processed):
 def process():
     header = request.get_json()
     processed = process_header(header)
-    write_to_db(header, processed)
+    # separate values to store
+
+    write_to_db(values)
     return jsonify({"status": "ok", "data": processed})
 
 if __name__ == "__main__":
