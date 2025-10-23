@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from datetime import date
-import requests, pycountry
+import requests, pycountry, logging
 from dotenv import load_dotenv, dotenv_values
 
 # This service will process the header from the collector service, storing non-personal
@@ -15,7 +15,7 @@ def process_header(info):
     user_agent = info.get("user_agent")
     try:
         url = f"https://vpnapi.io/api/{ip}?key={os.getenv('VPNAPI_key')}"
-        print(url, flush=True)
+        app.logger.info(f"url: {url}")
         ip_response = requests.get(url)
 
         ip_info = ip_response.json()
