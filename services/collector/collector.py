@@ -35,7 +35,7 @@ def send_headers():
         return render_template("index.html", 
                                agent=agent, 
                                # test hardcoding something here
-                               country="United States", 
+                               country=country, 
                                city=city, 
                                full_response=full_response, 
                                full_code_response=full_code_response, 
