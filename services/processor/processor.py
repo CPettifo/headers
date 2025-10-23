@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from datetime import date
-import requests, pycountry, logging
+import requests, pycountry, logging, os
 from dotenv import load_dotenv, dotenv_values
 
 # This service will process the header from the collector service, storing non-personal
