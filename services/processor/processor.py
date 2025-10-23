@@ -16,11 +16,7 @@ def process_header(info):
     try:
         ip_info_response = requests.get(f"https://vpnapi.io/api/{ip}?key={os.getenv("VPNAPI_key")}")
         ip_info = ip_info_response.json()
-
-        # TODO: Remove this if it is redundant
-        if "country" in ip_info:
-            country = pycountry.countries.get(alpha_2=ip_info["country"])
-            ip_info["country_name"] = country.name if country else ip_info["country"]
+        
 
     except Exception as e:
         ip_info = {"error": str(e)}

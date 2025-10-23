@@ -26,12 +26,12 @@ def send_headers():
         ip_info = data.get("data", {}).get("ip_info", {})
 
         agent = headers.get("User-Agent")
-        country_info = pycountry.countries.get(alpha_2=ip_info["country_code"])
+        location_info = ip_info.get("location")
+        country_info = pycountry.countries.get(alpha_2=location_info["country_code"])
         country = country_info.name
         flag = country_info.flag
-        city = ip_info.get("city")
-        full_response = data
-        full_code_response = response.status_code
+        region = location_info.get("region")
+        city = location_info.get("city")
         
 
         return render_template("index.html", 
@@ -40,6 +40,7 @@ def send_headers():
                                country=country, 
                                country_flag=flag,
                                city=city, 
+                               region=region,
                                # test getting the request.headers instead of having it as a dict
                                user_headers=request.headers)
 
