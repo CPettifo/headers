@@ -15,7 +15,7 @@ def process_header(info):
     user_agent = info.get("user_agent")
     try:
         url = f"https://vpnapi.io/api/{ip}?key={os.getenv('VPNAPI_key')}"
-        print(url)
+        print(url, flush=True)
         ip_response = requests.get(url)
 
         ip_info = ip_response.json()
