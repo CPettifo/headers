@@ -26,12 +26,17 @@ def send_headers():
         ip_info = data.get("data", {}).get("ip_info", {})
 
         agent = headers.get("User-Agent")
+        security_info = ip_info.get("security")
         location_info = ip_info.get("location")
         country_info = pycountry.countries.get(alpha_2=location_info["country_code"])
         country = country_info.name
         flag = country_info.flag
         region = location_info.get("region")
         city = location_info.get("city")
+        vpn = security_info.get("vpn")
+        proxy = security_info.get("proxy")
+        tor = security_info.get("tor")
+        relay = security_info.get("relay")
         
 
         return render_template("index.html", 
@@ -41,6 +46,10 @@ def send_headers():
                                country_flag=flag,
                                city=city, 
                                region=region,
+                               vpn=vpn,
+                               proxy=proxy,
+                               tor=tor,
+                               relay=relay,                               
                                # test getting the request.headers instead of having it as a dict
                                user_headers=request.headers)
 
