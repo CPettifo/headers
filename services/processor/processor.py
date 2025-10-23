@@ -48,7 +48,7 @@ def process():
     header = request.get_json()
     response = process_header(header)
 
-    location_info = response["ip_info"].get("location").json()
+    location_info = response["ip_info"].get("location")
 
     country = location_info["country"]
 
