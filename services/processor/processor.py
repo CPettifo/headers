@@ -22,10 +22,7 @@ def process_header(info):
         print(f"Status code: {ip_response.status_code}")
         print(f"Raw response text: {ip_response.text[:500]}")
 
-        if ip_response.status_code == 200:
-            ip_info = ip_response.json()
-        else:
-            ip_info = {"error": f"Bad response ({ip_response.status_code})", "body": ip_response.text}
+        ip_info = ip_response.json()
 
     except Exception as e:
         ip_info = {"error": str(e)}
