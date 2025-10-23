@@ -26,8 +26,9 @@ def send_headers():
         ip_info = data.get("data", {}).get("ip_info", {})
 
         agent = headers.get("User-Agent")
-        country = ip_info.get("country")
-        country = pycountry.countries.get(alpha_2=ip_info["country"])
+        country_info = pycountry.countries.get(alpha_2=ip_info["country"])
+        country = country_info.name
+        flag = country_info.flag
         city = ip_info.get("city")
         full_response = data
         full_code_response = response.status_code
@@ -37,6 +38,7 @@ def send_headers():
                                agent=agent, 
                                # test hardcoding something here
                                country=country, 
+                               country_flag=flag,
                                city=city, 
                                full_response=full_response, 
                                full_code_response=full_code_response, 
