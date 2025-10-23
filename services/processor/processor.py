@@ -2,6 +2,10 @@ from flask import Flask, request, jsonify
 from datetime import date
 import requests, pycountry
 
+# This service will process the header from the collector service, storing non-personal
+# data in the database, and returning all data to the browser session
+
+
 app = Flask(__name__)
 
 def process_header(info):
@@ -31,8 +35,8 @@ def write_to_db(values):
     # connect to db
     
     # write to db
-    # INSERT INTO logs (date, country)
-    # VALUES (values.date, values.country)
+    # INSERT INTO logs (date, country, user_agent)
+    # VALUES (values.date, values.country, values.user_agent)
 
 
     return 0
