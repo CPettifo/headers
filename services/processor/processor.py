@@ -59,7 +59,7 @@ def process():
 
     # separate values to store
     values = {
-        "country": location_info.get("country_name"),
+        "country": location_info.get("country_code"),
         "user_agent": response["user_agent"]
     }
 
