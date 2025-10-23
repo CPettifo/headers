@@ -14,8 +14,8 @@ def process_header(info):
     ip = info.get("ip")
     user_agent = info.get("user_agent")
     try:
-        ip_info = requests.get(f"https://vpnapi.io/api/{ip}?key={os.getenv("VPNAPI_key")}")
-
+        ip_info_response = requests.get(f"https://vpnapi.io/api/{ip}?key={os.getenv("VPNAPI_key")}")
+        ip_info = ip_info_response.json()
         
 
     except Exception as e:
@@ -45,9 +45,12 @@ def write_to_db(values):
 def process():
     header = request.get_json()
     response = process_header(header)
+
+    location_info = response["ip_info"].get("location")
+
     # separate values to store
     values = {
-        "country": response["ip_info"].get("country_name"),
+        "country": location_info.get("country_name"),
         "user_agent": response["user_agent"]
     }
 
