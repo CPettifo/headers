@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-import requests
+import requests, pycountry
 
 # This service will collect the information from the user and send it to the processor to return
 # information about the visitor based on their IP address.
@@ -27,6 +27,7 @@ def send_headers():
 
         agent = headers.get("User-Agent")
         country = ip_info.get("country")
+        country = pycountry.countries.get(alpha_2=ip_info["country"])
         city = ip_info.get("city")
         full_response = data
         full_code_response = response.status_code
