@@ -13,6 +13,9 @@ app = Flask(__name__)
 processor_url = "http://processor:5000/process"
 
 @app.route("/", methods=["GET"])
+def index():
+    return render_template("index.html")
+
 @app.route("/send", methods=["GET"])
 def send_headers():
     headers = dict(request.headers)
