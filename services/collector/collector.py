@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 import requests
 
 # This service will collect the information from the user and send it to the processor to return
