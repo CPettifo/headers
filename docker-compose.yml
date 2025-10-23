@@ -7,6 +7,8 @@ services:
       - "5000:5000"
     tty: true
     stdin_open: true
+    env_file:
+      - ./services/processor/.env
 
   collector:
     build: ./services/collector
