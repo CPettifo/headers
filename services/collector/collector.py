@@ -13,8 +13,7 @@ app = Flask(__name__)
 processor_url = "http://processor:5000/process"
 
 @app.route("/", methods=["GET"])
-def index():
-    return render_template("index.html")
+
 
 @app.route("/send", methods=["GET"])
 def send_headers():
@@ -32,15 +31,17 @@ def send_headers():
         full_response = data
         full_code_response = response.status_code
         
-        
+
         return render_template("index.html", 
                                agent=agent, 
-                               country=country, 
+                               # test hardcoding something here
+                               country="United States", 
                                city=city, 
                                full_response=full_response, 
                                full_code_response=full_code_response, 
                                sent_headers=public_headers, 
-                               user_headers=headers)
+                               # test getting the request.headers instead of having it as a dict
+                               user_headers=request.headers)
 
 
     except Exception as e:
