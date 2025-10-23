@@ -14,9 +14,18 @@ def process_header(info):
     ip = info.get("ip")
     user_agent = info.get("user_agent")
     try:
-        ip_info_response = requests.get(f"https://vpnapi.io/api/{ip}?key={os.getenv("VPNAPI_key")}")
-        ip_info = ip_info_response.json()
-        
+        url = f"https://vpnapi.io/api/{ip}?key={os.getenv('VPNAPI_key')}"
+        ip_response = requests.get(url)
+
+        # Debug log
+        print(f"Requesting: {url}")
+        print(f"Status code: {ip_response.status_code}")
+        print(f"Raw response text: {ip_response.text[:500]}")
+
+        if ip_response.status_code == 200:
+            ip_info = ip_response.json()
+        else:
+            ip_info = {"error": f"Bad response ({ip_response.status_code})", "body": ip_response.text}
 
     except Exception as e:
         ip_info = {"error": str(e)}
