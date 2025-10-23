@@ -57,7 +57,9 @@ def process():
 
     location_info = response["ip_info"].get("location")
 
-    country = location_info.get("country")
+    
+
+    country = location_info["country"]
 
 
     # separate values to store
