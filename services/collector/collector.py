@@ -40,9 +40,6 @@ def send_headers():
                                country=country, 
                                country_flag=flag,
                                city=city, 
-                               full_response=full_response, 
-                               full_code_response=full_code_response, 
-                               sent_headers=public_headers, 
                                # test getting the request.headers instead of having it as a dict
                                user_headers=request.headers)
 
