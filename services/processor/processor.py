@@ -49,8 +49,10 @@ def process():
     response = process_header(header)
 
     location_info = response["ip_info"].get("location")
-
-    country = location_info["country"]
+    if not location_info:
+        country = "AU"
+    else:
+        country = location_info["country"]
 
 
     # separate values to store
