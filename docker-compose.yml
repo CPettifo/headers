@@ -5,6 +5,8 @@ services:
     build: ./services/processor
     ports:
       - "5000:5000"
+    tty: true
+    stdin_open: true
 
   collector:
     build: ./services/collector
