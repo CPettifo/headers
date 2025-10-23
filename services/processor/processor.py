@@ -16,6 +16,7 @@ def process_header(info):
     try:
         url = f"https://vpnapi.io/api/{ip}?key={os.getenv('VPNAPI_key')}"
         app.logger.info(f"url: {url}")
+        print(url)
         ip_response = requests.get(url)
 
         ip_info = ip_response.json()
