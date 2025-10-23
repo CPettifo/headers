@@ -4,6 +4,7 @@ import requests, pycountry
 
 # This service will process the header from the collector service, storing non-personal
 # data in the database, and returning all data to the browser session
+# A call is made to ipinfo.io to get more information about the visitor's ip address
 
 
 app = Flask(__name__)

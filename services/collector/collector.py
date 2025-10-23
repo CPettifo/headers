@@ -1,6 +1,14 @@
 from flask import Flask, request
 import requests
 
+# This service will collect the information from the user and send it to the processor to return
+# information about the visitor based on their IP address.
+
+# It also stores the templates for the index and analytics pages.
+
+# TODO: Rename app to something more appropriate as it will also serve the Flask templates
+
+
 app = Flask(__name__)
 processor_url = "http://processor:5000/process"
 
