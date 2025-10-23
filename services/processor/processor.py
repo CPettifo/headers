@@ -18,7 +18,7 @@ def process_header(info):
 
         ip_response = requests.get(url)
 
-        ip_info = ip_response
+        ip_info = ip_response.json()
 
     except Exception as e:
         ip_info = {"error": str(e)}
