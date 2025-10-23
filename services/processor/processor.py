@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from datetime import date
 import requests, pycountry
+from dotenv import load_dotenv, dotenv_values
 
 # This service will process the header from the collector service, storing non-personal
 # data in the database, and returning all data to the browser session
@@ -13,9 +14,10 @@ def process_header(info):
     ip = info.get("ip")
     user_agent = info.get("user_agent")
     try:
-        ip_info_response = requests.get(f"https://ipinfo.io/{ip}/json")
+        ip_info_response = requests.get(f"https://vpnapi.io/api/{ip}?key={os.getenv("VPNAPI_key")}")
         ip_info = ip_info_response.json()
 
+        # TODO: Remove this if it is redundant
         if "country" in ip_info:
             country = pycountry.countries.get(alpha_2=ip_info["country"])
             ip_info["country_name"] = country.name if country else ip_info["country"]

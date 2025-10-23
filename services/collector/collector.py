@@ -26,7 +26,7 @@ def send_headers():
         ip_info = data.get("data", {}).get("ip_info", {})
 
         agent = headers.get("User-Agent")
-        country_info = pycountry.countries.get(alpha_2=ip_info["country"])
+        country_info = pycountry.countries.get(alpha_2=ip_info["country_code"])
         country = country_info.name
         flag = country_info.flag
         city = ip_info.get("city")
