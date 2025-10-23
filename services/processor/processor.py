@@ -15,11 +15,10 @@ def process_header(info):
     user_agent = info.get("user_agent")
     try:
         url = f"https://vpnapi.io/api/{ip}?key={os.getenv('VPNAPI_key')}"
-        app.logger.info(f"url: {url}")
-        print(url)
+
         ip_response = requests.get(url)
 
-        ip_info = ip_response.json()
+        ip_info = ip_response
 
     except Exception as e:
         ip_info = {"error": str(e)}
