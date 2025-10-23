@@ -26,16 +26,16 @@ def send_headers():
         data = response.json()
         ip_info = data.get("data", {}).get("ip_info", {})
         
-
-        return {
-            "agent": headers.get("User-Agent"),
-            "country": ip_info.get("country"),
-            "city": ip_info.get("city"),
-            "full_response": data,
-            "full_code_response": response.status_code,
-            "sent_headers": public_headers,
-            "user_headers": headers
-        }
+        return render_template("index.html")
+        #return {
+        #    "agent": headers.get("User-Agent"),
+        #    "country": ip_info.get("country"),
+        #    "city": ip_info.get("city"),
+        #    "full_response": data,
+        #    "full_code_response": response.status_code,
+        #    "sent_headers": public_headers,
+        #    "user_headers": headers
+        #}
     except Exception as e:
         return {"error": str(e)}, 500
 
