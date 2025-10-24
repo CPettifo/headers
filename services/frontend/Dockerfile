@@ -9,4 +9,4 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["python", "collector.py"]
+CMD ["python", "frontend.py"]
