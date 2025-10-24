@@ -23,7 +23,6 @@ def process_header(info):
         print(f"DEBUG: HTTP status code: {ip_response.status_code}", flush=True)
 
         ip_info = ip_response.json()
-        print(f"DEBUG: Received ip_info: {ip_info}", flush=True)
         
     except Exception as e:
         print(f"DEBUG: Exception during API call: {e}", flush=True)
