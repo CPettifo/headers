@@ -10,7 +10,7 @@ import requests, pycountry
 
 
 app = Flask(__name__)
-processor_url = "http://collector:5000/process"
+processor_url = "http://frontend:5000/process"
 
 @app.route("/", methods=["GET"])
 
