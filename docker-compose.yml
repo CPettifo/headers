@@ -11,6 +11,6 @@ services:
       - ./services/processor/.env
 
   collector:
-    build: ./services/collector
+    build: ./services/frontend
     ports:
       - "5001:5000"
