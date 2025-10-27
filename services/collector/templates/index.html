@@ -22,7 +22,6 @@
                         <li class="nav-item"><a class="nav-link" href="#about"><b>About You</b></a></li>
                         <li class="nav-item"><a class="nav-link" href="#fingerprinting"><b>Browser Fingerprinting</b></a></li>
                         <li class="nav-item"><a class="nav-link" href="#development"><b>Development Process</b></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#tech"><b>Technical Specs</b></a></li>
                         <li class="nav-item"><a class="nav-link" href="#tech"><b>Further Reading</b></a></li>
                     </ul>
                 </div>
@@ -156,6 +155,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Development section-->
         <section class="bg-light text-bg-light" id="development">
             <div class="container px-4">
@@ -165,26 +165,36 @@
 
                         <h3>Concept & Planning</h3>
                         <p class="lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                            deserunt mollit anim id est laborum.
+                            The project began when I identified some skills that I was lacking, and some that I wanted to showcase, namely:
+                        </p>
+                        <p class="lead">
+                            <b>Lacking </b>
+                            <ul>
+                                <li>Docker & Docker Orchestration</li>
+                                <li>API Integrations</li>
+
+                            </ul>
+                            <b>Showcasing</b>
+                            <ul>
+                                <li>Github</li>
+                                <li>Python</li>
+                                <li>Flask</li>
+                                <li>Web (HTML, CSS)</li>
+                            </ul>
+                        </p>
+                            I looked for free APIs and found VPNApi and wanted to demonstrate how much information is contained or can be gleaned from our request headers. 
                         </p>
 
                         <h3>Infrastructure</h3>
                         <p class="lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                            deserunt mollit anim id est laborum.
+                            First I dusted off my Raspberry Pi and configured it for SSH access and installed Docker and Git for development, then I created a Cloudflare tunnel
+                            to allow for access to the app from the public internet. 
                         </p>
 
                         <h3>(Re) Learning Docker</h3>
                         <p class="lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                            deserunt mollit anim id est laborum.                            
+                            I wanted to show that I understood Docker, so I broke the processing down into two separate components, the first containing the front-end which would
+                            pass the request header to the back-end, which would make the API call, then process and return this information.                    
                         </p>
 
                         <h3>The Collector</h3>
@@ -205,18 +215,15 @@
 
                         <h3>Bringing It Together</h3>
                         <p class="lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                            deserunt mollit anim id est laborum.                            
+                            Finally, the frontend presents the data in a clean, educational format. Users can see their own headers, fingerprint uniqueness, and a step-by-step 
+                            breakdown of how tracking occurs. Interactive elements allow testing different browsers, enabling or disabling VPNs, and experimenting with privacy 
+                            settings to understand the effect on identifiability.                         
                         </p>
 
                         <h3>The Rambling Awakens (writing)</h3>
                         <p class="lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                            deserunt mollit anim id est laborum.                           
+                            Throughout development, I maintained a running commentary on discoveries, insights, and reflections about privacy, fingerprinting, and cross-device tracking. 
+                            This evolved into a section for storytelling and context, bridging technical explanations with real-world examples (like Greg’s shopping scenario).                     
                         </p>
 
                         <h3>Formatting</h3>
@@ -237,17 +244,7 @@
                 </div>
             </div>
         </section>
-        <!-- Tech specs section-->
-        <section class="bg-dark text-bg-dark"id="tech">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="fw-bolder">Technical Specs</h2>
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
+
         <section class="bg-light text-bg-light" id="Further Reading & Sources">
         <div class="container px-4">
             <div class="row gx-4 justify-content-center">
