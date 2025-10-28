@@ -28,11 +28,6 @@ def send_headers():
 
         agent = headers.get("User-Agent")
         agent = parse_user_agent(agent)
-        device_type = agent.get("type")
-        device_brand = agent.get("brand")
-        device_model = agent.get("model")
-        device_os = agent.get("os")
-        device_browser = agent.get("browser")
         
         security_info = ip_info.get("security")
         location_info = ip_info.get("location")
@@ -104,8 +99,8 @@ def parse_user_agent(ua_string):
     
     device_info = {
         "type": result.device_type() or "Unknown",
-        "brand": result.brand_name() or "Unknown",
-        "model": result.model() or "Unknown",
+        "brand": result.device_brand() or "Unknown",
+        "model": result.device_model() or "Unknown",
         "os": result.os_name() + (" " + result.os_version() if result.os_version() else ""),
         "browser": result.client_name() + (" " + result.client_version() if result.client_version() else ""),
     }
