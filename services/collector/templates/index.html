@@ -48,19 +48,27 @@
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
                         <h2 class="fw-bolder">About <em>you</em></h2>
-                        <p class="lead">This is the information that all webpages on the web know about you</p>
-                        <ul class="initialism">
-                            <p>You're using {{agent}}</p>
-                            <p>Looks like you're in {{country}} {{country_flag}}</p>
-                            <p>More specifically: {{region}}</p>
-                            <p>More more specifically {{city}}</p>
-                            <p>Using VPN? {{vpn}}</p>
-                            <p>Using proxy? {{proxy}}</p>
-                            <p>Using tor? {{tor}}</p>
-                            <p>Using relay? {{relay}}</p>
+                        <h3>What Your IP Tells Me</h3>
+                    
+                        <p>You're using {{agent}}</p>
+                        <p>Looks like you're in {{country}} {{country_flag}}</p>
+                        <p>In the region: {{region}}</p>
+                        <p>And the city: {{city}}</p>
+                        
                             <!--<p>The user headers were {{user_headers}}</p>-->
 
-                        </ul>
+                        <h3>Privacy Tools Used</h3>
+                        <h4><a href="https://en.wikipedia.org/wiki/Virtual_private_network">Virtual Private Network (VPN)</a></h4>
+                        <p>{{vpn}}</p>
+
+                        <h4><a href="https://en.wikipedia.org/wiki/Tor_(network)">The Onion Router (TOR)</a></h4>
+                        <p> {{tor}}</p>
+                        
+                        <h4><a href="https://en.wikipedia.org/wiki/Relay_network">Relay Network</a></h4>                            
+                        <p>{{relay}}</p>
+                        
+                        <h4><a href="https://en.wikipedia.org/wiki/Proxy_server">Proxy Server</a></h4>
+                        <p>{{proxy}}</p>
                     </div>
                 </div>
             </div>
