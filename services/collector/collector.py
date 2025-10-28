@@ -95,14 +95,16 @@ def send_headers():
 
 
 def parse_user_agent(ua_string):
-    result = Parser(ua_string)
+    parser = Parser(ua_string)
     
+    browser, browser_version, os, os_version, device_type, device_name, device_host = parser()
+
     device_info = {
-        "type": result.device_type or "Unknown",
-        "brand": result.device_host or "Unknown",
-        "model": result.device_name or "Unknown",
-        "os": result.os + (" " + result.os_version if result.os_version else ""),
-        "browser": result.browser + (" " + result.browser_version if result.browser_version else ""),
+        "type": device_type or "Unknown",
+        "brand": device_host or "Unknown",
+        "model": device_name or "Unknown",
+        "os": os + (" " + os_version if os_version else ""),
+        "browser": browser + (" " + browser_version if browser_version else ""),
     }
     return device_info
 
