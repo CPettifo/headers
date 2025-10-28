@@ -1,0 +1,150 @@
+                        <!--
+                        <h3>Concept & Planning</h3>
+                        <p class="lead">
+                            The project began when I identified some skills that I was lacking and became the conduit for me learning the basics of these tools, namely:
+                            <ul>
+                                <li>Docker & Docker Compose for Containerisation & Orchestration</li>
+                                <li>Communication between microservices</li>
+                                <li>GitHub for version control & developing in different environments</li>
+                                <li>Integrating API calls</li>
+                                <li>SSH and development & maintenance in a linux environment</li>
+                            </ul>
+                            I looked for free APIs and found VPNApi and wanted to demonstrate how much information is contained or can be gleaned from our request headers. 
+                        </p>
+
+                        <h3>Infrastructure</h3>
+                        <p class="lead">
+                            First I dusted off my Raspberry Pi and configured it for SSH access and installed Docker and Git for development, then I created a Cloudflare tunnel
+                            to allow for access to the app from the public internet. 
+                        </p>
+
+                        <h3>(Re) Learning Docker</h3>
+                        <p class="lead">
+                            I wanted to show that I understood Docker, so I broke the processing down into two separate components, the first containing the front-end which would
+                            pass the request header to the back-end, which would make the API call, then process and return this information.                    
+                        </p>
+
+                        <h3>The Collector</h3>
+                        <p class="lead">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                            deserunt mollit anim id est laborum.                            
+                        </p>
+
+                        <h3>The Processor</h3>
+                        <p class="lead">
+                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                            deserunt mollit anim id est laborum.                           
+                        </p>
+
+                        <h3>Bringing It Together</h3>
+                        <p class="lead">
+                            Finally, the frontend presents the data in a clean, educational format. Users can see their own headers, fingerprint uniqueness, and a step-by-step 
+                            breakdown of how tracking occurs. Interactive elements allow testing different browsers, enabling or disabling VPNs, and experimenting with privacy 
+                            settings to understand the effect on identifiability.                         
+                        </p>
+
+                        <h3>The Rambling Awakens (writing)</h3>
+                        <p class="lead">
+                            Throughout development, I maintained a running commentary on discoveries, insights, and reflections about privacy, fingerprinting, and cross-device tracking. 
+                            This evolved into a section for storytelling and context, bridging technical explanations with real-world examples (like Greg’s shopping scenario).                     
+                        </p>
+
+                        <h3>Formatting</h3>
+                        <p class="lead">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                            deserunt mollit anim id est laborum.                            
+                        </p>
+                        <h3>Formatting & Next Steps</h3>
+                        <p class="lead">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                            deserunt mollit anim id est laborum.                            
+                        </p>-->
+
+
+<!--
+                            <br>
+                            <h3>Your Request Headers Tell a Story #TODO: Move rambling to bottom of page </h3>
+                            <p class="lead">
+                                A good amount of information is given away in a request header, including details like your browser, operating system,
+                                language settings, IP address, and other metadata. This information is <em>normally</em> used to optimise functionality and 
+                                user experience (for example serving region or language-specific content), but it can also reveal personal data about you.
+                                Your headers can be used to link your browsing habits to you <b>even if you block trackers, reject cookies, and use a VPN!</b>
+                            </p>
+                            <p class="lead">
+                                There are identifying characteristics, i.e. when you visit a site if you are "unique" enough, that site will say, hey someone 
+                                using Chrome visited my site, they spoke English and were in the Beijing timezone, but their location was set to Dublin
+                                , they were on Mac and were using Chrome. This information is shared among some places and a site like say, Youtube, Google, 
+                                Amazon might link this to your login, which tells them, oh Greg logged in using this browser at this time, and that browser matches
+                                one that visited Toys-R-Us yesterday. 
+                                Then that information can be sold to data brokers, so that an online browsing history is built about you, without your consent! 
+               
+                            </p>
+                            <br>
+                            <h3>What Your Header Story is Used For</h3>
+                            <p class="lead">
+                                Your journey across the internet is used primarily to serve you more personalised advertisements. If linked to your personal identity, it
+                                <em>enriches</em> the information that data brokers collect on you. I'll use an example of Greg, who normally browses
+                                using Chrome, where he stays logged in to his social media accounts. Greg is savvy enough to know that if he is shopping for his partner's 
+                                surprise present - a stuffed panda - he might start seeing personalised ads for stuffed animals. If his partner glances at his screen, the 
+                                surprise could be ruined. 
+                            </p>
+                            <p class="lead">
+                                To avoid this, Greg decides to use Firefox to purchase the gift. However, when he goes back to Chrome, he finds that he starts to see advertisements
+                                for stuffed animals. How could he have been tracked across different browsers?
+                            </p>
+                            <h4>Account-based tracking</h4>
+                            <p class="lead">
+                                Greg could have signed in to his Amazon account to make the purchase, <a href="https://joindeleteme.com/blog/does-amazon-sell-your-personal-information/">
+                                Amazon would've known that Greg was interested in stuffed pandas</a>, when he returned to Chrome his Amazon suggestions would include similar items. 
+                                
+                                <b>Greg used another Amazon account that he only makes gift purchases on, so this was not the cause</b>
+                            </p>
+                            <h4>#TODO Cross-Device/ Cross-Service Tracking</h4>
+                            <p class="lead">
+
+                            </p>
+
+                            <h4>#TODO Third-party cookies & syncing</h4>
+                            <p class="lead">
+                                
+                            </p>
+
+                            <h4>#TODO Network-Level Tracking</h4>
+                            <p class="lead">
+                                
+                            </p>
+
+                            <h4>#TODO Canvas-API Fingerprinting</h4>
+                            <p class="lead">
+                                
+                            </p>
+
+                            <h4>#TODO General Browser Fingerprinting</h4>
+                            <p class="lead">
+                                
+                            </p>
+        
+                            </p>
+                            <br>
+                            <h3>At The End of The Day You're Another Day Older</h3>
+                            <p class="lead">
+                                What started as a small portfolio project led to some surface-level research into the world of browsing data and how this information is 
+                                harvested to be sold to data brokers, and how much information is out there about all users of the internet. 
+                            </p>
+                            <p class="lead">
+                                Unfortunately dealing with fingerprinting is counter-intuitive, steps that you take to try to maintain your privacy like using a VPN, or a less popular browser like Brave,
+                                LibreWolf, or even Firefox, make you stand out against the majority of users using Chrome. Heck, if I browse on Firefox on my Ubuntu computer my fingerprint is <em>unique</em>
+                                out of over 300,000 other browsers.
+                            </p>
+                            <p class="lead">    
+                                <a link href="https://coveryourtracks.eff.org/">Cover Your Tracks</a> does a much better job of explaining this, and has a 
+                                free tool for testing how identifiable you are in your current browser.
+                            </p>-->
