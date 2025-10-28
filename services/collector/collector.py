@@ -74,8 +74,8 @@ def send_headers():
                                 device_type = device_type,
                                 device_brand = device_host,
                                 device_model = device_name,
-                                device_os = os + os_version,
-                                device_browser = browser + browser_version,
+                                device_os = os,
+                                device_browser = browser,
                                 # test hardcoding something here
                                 country=country, 
                                 country_flag=flag,
