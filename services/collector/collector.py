@@ -37,29 +37,31 @@ def send_headers():
 
         if vpn:
             vpn = "The IP that your traffic is coming from is associated with a VPN provider. This helps hide your traffic " \
-                "from your ISP and can protect you on unsecured networks."
+                "from your ISP and can protect you on unsecured networks. Sadly this will get you excluded from using some services, or " \
+                "result in you getting served more and more difficult Captchas."
         else:
-            vpn = "It doesn't look like you're using a VPN, so either you're not or your VPN provider's IP isn't recognized, nice!"
+            vpn = "It doesn't look like you're using a VPN, so either you're not or your VPN provider's IP isn't recognized, nice! " \
+            "These days you really should be using a VPN to maintain some level of online privacy!"
 
         proxy = security_info.get("proxy")
         if proxy:
             proxy = "Looks like you're using a proxy server, which routes your connection through another system. " \
                     "People often use proxies for privacy, content filtering, or to bypass restrictions."
         else:
-            proxy = "No proxy detected — your connection seems to be direct, without an intermediary server forwarding your traffic."
+            proxy = "No proxy detected, your connection seems to be direct, without an intermediary server forwarding your traffic."
 
         tor = security_info.get("tor")
         if tor:
             tor = "Your traffic seems to be coming through the Tor network. Tor is often used for strong anonymity and privacy, " \
                 "routing data through several encrypted relays before it reaches the internet. Onions have layers!"
         else:
-            tor = "No signs of Tor usage detected — your connection isn’t coming from a Tor exit node."
+            tor = "No signs of Tor usage detected, your connection isn’t coming from a Tor exit node."
 
         relay = security_info.get("relay")
         if relay:
             relay = "This IP functions as a relay, meaning it forwards traffic for other users or services."
         else:
-            relay = "No relay activity detected — this IP doesn’t appear to be forwarding traffic for others."
+            relay = "No relay activity detected, this IP doesn’t appear to be forwarding traffic for others."
 
 
         return render_template("index.html", 
