@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 import requests, pycountry
-from device_detector import DeviceDetector
+from user_agent_parser import Parser
 
 # This service will collect the information from the user and send it to the processor to return
 # information about the visitor based on their IP address.
@@ -95,14 +95,14 @@ def send_headers():
 
 
 def parse_user_agent(ua_string):
-    result = DeviceDetector(ua_string).parse()
+    result = Parser(ua_string)
     
     device_info = {
-        "type": result.device_type() or "Unknown",
-        "brand": result.device_brand() or "Unknown",
-        "model": result.device_model() or "Unknown",
-        "os": result.os_name() + (" " + result.os_version() if result.os_version() else ""),
-        "browser": result.client_name() + (" " + result.client_version() if result.client_version() else ""),
+        "type": result.device_type or "Unknown",
+        "brand": result.device_host or "Unknown",
+        "model": result.device_name or "Unknown",
+        "os": result.os + (" " + result.os_version if result.os_version else ""),
+        "browser": result.browser + (" " + result.browser_version if result.browser_version else ""),
     }
     return device_info
 
