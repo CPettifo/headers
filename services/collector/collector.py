@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 import requests, pycountry
+from device_detector import DeviceDetector
 
 # This service will collect the information from the user and send it to the processor to return
 # information about the visitor based on their IP address.
@@ -26,6 +27,13 @@ def send_headers():
         ip_info = data.get("data", {}).get("ip_info", {})
 
         agent = headers.get("User-Agent")
+        agent = parse_user_agent(agent)
+        device_type = agent.get("type")
+        device_brand = agent.get("brand")
+        device_model = agent.get("model")
+        device_os = agent.get("os")
+        device_browser = agent.get("browser")
+        
         security_info = ip_info.get("security")
         location_info = ip_info.get("location")
         country_info = pycountry.countries.get(alpha_2=location_info["country_code"])
@@ -35,6 +43,7 @@ def send_headers():
         city = location_info.get("city")
         vpn = security_info.get("vpn")
 
+        # flesh out information for privacy tools used
         if vpn:
             vpn = "The IP that your traffic is coming from is associated with a VPN provider. This helps hide your traffic " \
                 "from your ISP and can protect you on unsecured networks. Sadly this will get you excluded from using some services, or " \
@@ -65,22 +74,43 @@ def send_headers():
 
 
         return render_template("index.html", 
-                               agent=agent, 
-                               # test hardcoding something here
-                               country=country, 
-                               country_flag=flag,
-                               city=city, 
-                               region=region,
-                               vpn=vpn,
-                               proxy=proxy,
-                               tor=tor,
-                               relay=relay,                               
-                               # test getting the request.headers instead of having it as a dict
-                               user_headers=request.headers)
+                                device_type = agent.get("type"),
+                                device_brand = agent.get("brand"),
+                                device_model = agent.get("model"),
+                                device_os = agent.get("os"),
+                                device_browser = agent.get("browser"),
+                                # test hardcoding something here
+                                country=country, 
+                                country_flag=flag,
+                                city=city, 
+                                region=region,
+                                vpn=vpn,
+                                proxy=proxy,
+                                tor=tor,
+                                relay=relay,                               
+                                # test getting the request.headers instead of having it as a dict
+                                user_headers=request.headers)
+
+
 
 
     except Exception as e:
         return {"error": str(e)}, 500
+
+
+
+def parse_user_agent(ua_string):
+    result = DeviceDetector(ua_string).parse()
+    
+    device_info = {
+        "type": result.device_type() or "Unknown",
+        "brand": result.brand_name() or "Unknown",
+        "model": result.model() or "Unknown",
+        "os": result.os_name() + (" " + result.os_version() if result.os_version() else ""),
+        "browser": result.client_name() + (" " + result.client_version() if result.client_version() else ""),
+    }
+    return device_info
+
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5000, debug = True)

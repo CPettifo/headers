@@ -19,7 +19,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about"><b>About You</b></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about"><b>About <em>You</em></b></a></li>
                         <li class="nav-item"><a class="nav-link" href="#fingerprinting"><b>Browser Fingerprinting</b></a></li>
                         <li class="nav-item"><a class="nav-link" href="#tech"><b>Technical Stuff</b></a></li>
                     </ul>
@@ -48,9 +48,14 @@
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
                         <h2 class="fw-bolder">About <em>you</em></h2>
+                        <h3>What your Request Headers Tell Me</h3>
+                        <p>Your device type: {{device_type}}</p>
+                        <p>Brand: {{device_brand}}</p>
+                        <p>Model: {{device_model}}</p>
+                        <p>Operating System: {{device_os}}</p>
+                        <p>Browser: {{device_browser}}</p>
+
                         <h3>What Your IP Tells Me</h3>
-                    
-                        <p>You're using {{agent}}</p>
                         <p>Looks like you're in {{country}} {{country_flag}}</p>
                         <p>In the region: {{region}}</p>
                         <p>And the city: {{city}}</p>
@@ -79,6 +84,12 @@
                     <div class="col-lg-8">
                         <h2 class="fw-bolder">Browser Fingerprinting</h2>
                         <div>
+                            <p class="lead">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
+                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                                deserunt mollit anim id est laborum.    
+                            </p>
                         </div>
                     </div>
                 </div>
