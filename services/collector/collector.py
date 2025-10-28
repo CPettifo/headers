@@ -72,10 +72,10 @@ def send_headers():
 
         return render_template("index.html", 
                                 device_type = device_type,
-                                device_brand = device_host,
-                                device_model = device_name,
                                 device_os = os,
+                                device_os_version = os_version,
                                 device_browser = browser,
+                                device_browser_version = browser_version,
                                 # test hardcoding something here
                                 country=country, 
                                 country_flag=flag,
