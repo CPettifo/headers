@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "frontend.py"]
+CMD ["python", "collector.py"]
