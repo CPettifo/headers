@@ -34,8 +34,15 @@ def send_headers():
         region = location_info.get("region")
         city = location_info.get("city")
         vpn = security_info.get("vpn")
+        if vpn:
+            vpn = "The IP that your traffic is coming from is associated with a VPN provider, this helps hide your traffic" \
+            "from your ISP and while on unsecured networks."
+        else:
+            vpn = "It doesn't <em>look</em> like you're using a VPN"
         proxy = security_info.get("proxy")
+        
         tor = security_info.get("tor")
+        
         relay = security_info.get("relay")
         
 
