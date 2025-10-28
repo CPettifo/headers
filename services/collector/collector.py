@@ -27,7 +27,9 @@ def send_headers():
         ip_info = data.get("data", {}).get("ip_info", {})
 
         agent = headers.get("User-Agent")
-        agent = parse_user_agent(agent)
+        parser = Parser(agent)
+    
+        browser, browser_version, os, os_version, device_type, device_name, device_host = parser()
         
         security_info = ip_info.get("security")
         location_info = ip_info.get("location")
@@ -69,11 +71,11 @@ def send_headers():
 
 
         return render_template("index.html", 
-                                device_type = agent.get("type"),
-                                device_brand = agent.get("brand"),
-                                device_model = agent.get("model"),
-                                device_os = agent.get("os"),
-                                device_browser = agent.get("browser"),
+                                device_type = device_type,
+                                device_brand = device_host,
+                                device_model = device_name,
+                                device_os = os + os_version,
+                                device_browser = browser + browser_version,
                                 # test hardcoding something here
                                 country=country, 
                                 country_flag=flag,
@@ -88,25 +90,8 @@ def send_headers():
 
 
 
-
     except Exception as e:
         return {"error": str(e)}, 500
-
-
-
-def parse_user_agent(ua_string):
-    parser = Parser(ua_string)
-    
-    browser, browser_version, os, os_version, device_type, device_name, device_host = parser()
-
-    device_info = {
-        "type": device_type or "Unknown",
-        "brand": device_host or "Unknown",
-        "model": device_name or "Unknown",
-        "os": os + (" " + os_version if os_version else ""),
-        "browser": browser + (" " + browser_version if browser_version else ""),
-    }
-    return device_info
 
 
 if __name__ == "__main__":
