@@ -48,14 +48,11 @@
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
                         <h2 class="fw-bolder">About <em>you</em></h2>
-                        <h3>What your Request Headers Tell Me</h3>
-                        <p>Your device type: {{device_type}}</p>
-                        <p>Operating System: {{device_os}}</p>
-                        <p>OS Version: {{device_os_version}}</p>
-                        <p>Browser: {{device_browser}}</p>
-                        <p>Browser Version: {{device_browser_version}}</p>
+                        <h3>What your Request Headers say about your device</h3>
+                        <p>Your device type: {{device_type}}, {{device_os}} {{device_os_version}}</p>
+                        <p>Browser: {{device_browser}} {{device_browser_version}}</p>
 
-                        <h3>What Your IP Tells Me</h3>
+                        <h3>Where your IP says you are</h3>
                         <p>Looks like you're in {{country}} {{country_flag}}</p>
                         <p>In the region: {{region}}</p>
                         <p>And the city: {{city}}</p>
