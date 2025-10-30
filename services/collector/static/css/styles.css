@@ -307,6 +307,7 @@ img,
 svg {
   max-width: 100%;
   height: auto;
+  width: 100%;
   display: block;
   object-fit:contain;
 
