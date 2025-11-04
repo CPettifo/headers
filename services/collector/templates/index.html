@@ -110,19 +110,23 @@
                     <div class="col-lg-8">
                         <h2 class="fw-bolder">Technical Stuff</h2>
                         <h3>System Diagrams</h3>
+                        <p class="lead">
+                            This web app is running on the Raspberry Pi in my kitchen which is open directly to the internet via a Cloudflare tunnel. The journey 
+                            that your request takes from you typing in the URL or clicking a link to the site is illustrated and explained below.
+                        </p>
                         <a href="https://irp.cdn-website.com/f5fcbbf0/dms3rep/multi/Request+Process.png"><img class="img-fluid diagram-img" src="https://irp.cdn-website.com/f5fcbbf0/dms3rep/multi/Request+Process.png" alt="Diagram of request process from user to webserver"></a>
                         <p class="lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                            deserunt mollit anim id est laborum.    
+                            The first thing that your browser does once it gets the request for headers.pettifor.tech is ask the DNS Resolver (kind of the internet phone book) 
+                            where to find that domain. In my case it looks at the domain itself (pettifor.tech) and tries to figure out how to get to the headers subdomain. 
+                            Cloudflare is my receptionist so it gives the DNS Resolver the IP address for the service, which is then passed back to the browser. <br>
+                            Now that the browser knows where to send the request, the request itself is formed, then sent to Cloudflare, who knows that requests should be tunneled 
+                            to my Pi. What happens within the Raspberry Pi is explained briefly below.
                         </p>
                         <a href="https://irp.cdn-website.com/f5fcbbf0/dms3rep/multi/Request+Processing.png"><img class="img-fluid diagram-img" src="https://irp.cdn-website.com/f5fcbbf0/dms3rep/multi/Request+Processing.png" alt="Diagram of request process from user to webserver"></a>
                         <p class="lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                            deserunt mollit anim id est laborum.    
+                            The frontend sends the HTTP headers to the backend to be processed, basically the backend service forwards the IP address to an external API to get some 
+                            basic information about the IP address. The user's <b>User Agent</b> (browser and operating system) is simplified using a Python library. This enriched 
+                            information is then used to populate this page that you're looking at now, which if everything worked correctly shows the correct information for your IP!
                         </p>
                         <h3>More about Online Privacy</h3>
                         <ul>
